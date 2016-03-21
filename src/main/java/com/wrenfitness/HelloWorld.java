@@ -1,4 +1,4 @@
-package com.wrenfitness.wren;
+package com.wrenfitness;
 
 public class HelloWorld {
 
