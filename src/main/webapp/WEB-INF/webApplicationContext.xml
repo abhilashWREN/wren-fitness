@@ -18,4 +18,6 @@
 
   <mvc:annotation-driven />
 
+ <import resource="classpath:hibernateContext.xml"/>
+
 </beans>

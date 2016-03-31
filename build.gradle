@@ -3,10 +3,13 @@ apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'org.akhikhl.gretty'
 
+ext {
+    springVersion = "4.0.0.RELEASE";
+}
+
    repositories {
    
     jcenter()
-    mavenCentral()
     mavenLocal()
 }   
 
@@ -26,8 +29,21 @@ dependencies {
     compile 'javax.servlet:javax.servlet-api:3.1.0'
     compile 'org.springframework:spring-context:4.0.0.RELEASE'
     compile 'org.springframework:spring-webmvc:4.0.0.RELEASE'
+    compile 'org.springframework:spring-tx:4.0.0.RELEASE'
+    
+    compile group: 'org.springframework', name: 'spring-context', version: "4.0.0.RELEASE"
     }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.12'
+}
+
+ task show << {
+        println 'project: ' + project.path
+        println 'srcDirName: ' + srcDirName
+        File srcDir = srcDir()
+        println 'srcDir: ' + rootProject.relativePath(srcDir)
+    }
 
 
 
