@@ -15,7 +15,6 @@
         /WEB-INF/webApplicationContext.xml
         /WEB-INF/mvc-dispatcher-servlet.xml
         </param-value>
-
     </context-param>
 
 <!--     <context-param> -->

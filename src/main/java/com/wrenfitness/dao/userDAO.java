@@ -1,5 +1,6 @@
 package com.wrenfitness.dao;
 
+import javax.annotation.Resource;
 import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.Criteria;
@@ -14,7 +15,6 @@ import com.wrenfitness.domain.User;
 import static org.hibernate.criterion.Restrictions.eq;
 
 @Component
-@Transactional
 public class userDAO {
 
 	@Autowired
