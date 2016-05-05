@@ -19,5 +19,7 @@
   <mvc:annotation-driven />
 
  <import resource="hibernateContext.cfg.xml"/>
+ 
+ 
 
 </beans>
