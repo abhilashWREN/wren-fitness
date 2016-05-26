@@ -22,6 +22,7 @@ public class userDAO {
 	
     @Autowired
 	private SessionFactory sessionFactory;
+    
 	
 	public User getUser(int userId) {
 		//System.out.println(context.getBeanDefinitionNames());
