@@ -7,11 +7,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
-@ContextConfiguration(locations="webApplicationContextTest.xml")
+@ContextConfiguration(locations="classpath:webApplicationContextTest.xml")
+@Transactional
 public class hibernateTest {
 
 	@Autowired
@@ -19,6 +21,7 @@ public class hibernateTest {
 	
 	@Test
 	public void checkHibernateConfig() {
+		System.out.println("Check Config");
 		if(sessionFactory == null)
 		{
 			System.out.println("NULL");

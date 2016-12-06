@@ -17,13 +17,19 @@ import com.wrenfitness.domain.User;
 
 import static org.hibernate.criterion.Restrictions.eq;
 
-@Component
+@Transactional
 public class userDAO {
 	
-    @Autowired
-	private SessionFactory sessionFactory;
     
-	
+	private SessionFactory sessionFactory;
+ 
+	public userDAO() {
+	}
+
+	 public void setSessionFactory(SessionFactory sessionFactory) {
+	        this.sessionFactory = sessionFactory;
+	    }
+
 	public User getUser(int userId) {
 		//System.out.println(context.getBeanDefinitionNames());
 		Session session = sessionFactory.getCurrentSession();

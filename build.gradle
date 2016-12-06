@@ -9,6 +9,12 @@ apply plugin: 'org.akhikhl.gretty'
     mavenLocal()
 }   
 
+gretty {
+    port = 8501
+    contextPath = '/'
+    servletContainer = 'tomcat8'
+}
+
 buildscript {
   repositories {
     jcenter()
@@ -20,7 +26,7 @@ buildscript {
 }
 
 dependencies {
-    compile 'org.hibernate:hibernate-core:5.0.1.Final'
+    compile 'org.hibernate:hibernate-core:4.1.4.Final'
     compile 'javax.servlet:javax.servlet-api:3.1.0'
     compile 'org.springframework:spring-context:4.0.0.RELEASE'
     compile 'org.springframework:spring-webmvc:4.0.0.RELEASE'
@@ -31,19 +37,16 @@ dependencies {
     compile 'org.springframework:spring-test:4.0.0.RELEASE'
     compile 'org.springframework.security:spring-security-web:4.0.0.RELEASE'
     compile 'log4j:log4j:1.2.14'
-    compile 'org.slf4j:slf4j-log4j12:1.7.5'
     compile 'junit:junit:4.11'
+    compile group: 'org.springframework', name: 'spring-orm', version: '4.0.3.RELEASE'
     
     compile group: 'org.springframework', name: 'spring-context', version: "4.0.0.RELEASE"
+    
+    runtime 'log4j:log4j:1.2.14'
     }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.12'
-}
-
-gretty {
-    port = 8501
-    servletContainer = 'tomcat8'
 }
 
 
