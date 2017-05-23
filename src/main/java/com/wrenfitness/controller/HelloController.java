@@ -12,7 +12,7 @@ import com.wrenfitness.domain.User;
 
 import java.util.Map;
 
-
+/*
 @Controller
 @RequestMapping("/")
 public class HelloController {
@@ -63,3 +63,4 @@ public class HelloController {
 	}
 	
 }
+*/

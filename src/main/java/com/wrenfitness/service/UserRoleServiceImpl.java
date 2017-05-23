@@ -7,29 +7,25 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.wrenfitness.dao.UserProfileDao;
+import com.wrenfitness.dao.UserRoleDao;
 import com.wrenfitness.model.Role;
 import com.wrenfitness.model.UserProfile;
 
 
-@Service("userProfileService")
+@Service("userRoleService")
 @Transactional
-public class UserProfileServiceImpl implements UserProfileService{
+public class UserRoleServiceImpl implements UserRoleService{
 	
 	@Autowired
-	UserProfileDao dao;
+	UserRoleDao dao;
 
 	@Override
-	public UserProfile findById(int id) {
+	public Role findById(int id) {
 		return dao.findById(id);
 	}
 
 	@Override
-	public UserProfile findByFirstName(String firstName) {
-		return dao.findByFirstName(firstName);
-	}
-
-	@Override
-	public List<UserProfile> findAll() {
-		return dao.findAll();
+	public List<Role> findAllRoles() {
+		return dao.findAllRoles();
 	}
 }

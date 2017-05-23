@@ -8,12 +8,13 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.wrenfitness.model.Role;
+import com.wrenfitness.model.UserProfile;
 
 
 @Repository("userProfileDao")
-public class UserProfileDaoImpl extends AbstractDao<Integer, Role>implements UserProfileDao{
+public class UserProfileDaoImpl extends AbstractDao<Integer, UserProfile>implements UserProfileDao{
 
-	public Role findById(int id) {
+	public UserProfile findById(int id) {
 		return getByKey(id);
 	}
 
@@ -24,10 +25,17 @@ public class UserProfileDaoImpl extends AbstractDao<Integer, Role>implements Use
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Role> findAll(){
+	public List<UserProfile> findAll(){
 		Criteria crit = createEntityCriteria();
-		crit.addOrder(Order.asc("type"));
-		return (List<Role>)crit.list();
+		crit.addOrder(Order.asc("FirstName"));
+		return (List<UserProfile>)crit.list();
+	}
+
+	@Override
+	public UserProfile findByFirstName(String firstName) {
+		Criteria crit = createEntityCriteria();
+		crit.add(Restrictions.eq("FirstName", firstName));
+		return (UserProfile) crit.uniqueResult();
 	}
 	
 }

@@ -94,7 +94,7 @@ public class AppController {
 		 * framework as well while still using internationalized messages.
 		 * 
 		 */
-		if(!userService.isUserSSOUnique(user.getId(), user.getSsoId())){
+		if(!userService.isUserNameUnique(user.getId(), user.getUserName())){
 			FieldError ssoError =new FieldError("user","ssoId",messageSource.getMessage("non.unique.ssoId", new String[]{user.getSsoId()}, Locale.getDefault()));
 		    result.addError(ssoError);
 			return "registration";

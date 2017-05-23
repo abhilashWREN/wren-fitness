@@ -3,13 +3,14 @@ package com.wrenfitness.dao;
 import java.util.List;
 
 import com.wrenfitness.model.Role;
+import com.wrenfitness.model.UserProfile;
 
 
 public interface UserProfileDao {
 
-	List<Role> findAll();
+	List<UserProfile> findAll();
 	
-	Role findByType(String type);
+	UserProfile findByFirstName(String firstName);
 	
-	Role findById(int id);
+	UserProfile findById(int id);
 }

@@ -25,7 +25,7 @@ public class User implements Serializable{
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="AccountID")
-	private Integer AccountID;
+	private Integer id;
 
 	@NotEmpty
 	@Column(name="Username",nullable=false)
@@ -57,13 +57,6 @@ public class User implements Serializable{
 		this.id = id;
 	}
 
-	public String getSsoId() {
-		return ssoId;
-	}
-
-	public void setSsoId(String ssoId) {
-		this.ssoId = ssoId;
-	}
 
 	public String getPassword() {
 		return password;
@@ -79,6 +72,30 @@ public class User implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public Role getUserProfile() {
+		return userProfile;
+	}
+
+	public void setUserProfile(Role userProfile) {
+		this.userProfile = userProfile;
 	}
 
 	@Override
