@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html class="no-js">
 	<head>
 	<meta charset="utf-8">
@@ -68,7 +71,7 @@
 								<li><a href="#" class="fh5co-sub-ddown">User</a>
 									<ul class="fh5co-sub-menu" >
 										<li><a href="/viewprofile">My Profile</a></li>
-										<li><a href="#" target="_blank">Logout</a></li>
+										<li><a href="<c:url value="/logout" />" target="_blank">Logout</a></li>
 									</ul>
 								</li>
 								<li><a href="/login">Login</a></li>
@@ -101,39 +104,68 @@
 							<div class="row">
 								<div class="col-md-12 text-center"><h2>Create Your Account With Us!</h2></div>
 								<div class="col-md-6">
-								<form action="#" method="post">
-									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Firstname" required>
-									</div>
-								</div>
+								<form:form method="post" modelAttribute="user">
+								<form:input type="hidden" path="id" id="id"/>
+										<div class="form-group">
+											<form:input type="text" class="form-control" path="firstName" id="firstName"
+												placeholder="Firstname" required />
+											<div class="has-error">
+												<form:errors path="firstName" class="help-inline" />
+											</div>
+										</div>
+										</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Lastname" required>
+										<form:input type="text" class="form-control" path="lastName" id="lastName"
+										placeholder="Lastname" required/>
+										<div class="has-error">
+                            <form:errors path="lastName" class="help-inline"/>
+                        </div>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<input type="email" class="form-control" placeholder="Email" required>
+										<form:input type="email" class="form-control" path="email" id="email"
+										placeholder="Email" required/>
+										<div class="has-error">
+                            <form:errors path="email" class="help-inline"/>
+                        </div>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="password" class="form-control" placeholder="Password" required>
+										<form:input type="password" class="form-control" path="password" id="password"
+										 placeholder="Password" required/>
+										 <div class="has-error">
+                            <form:errors path="password" class="help-inline"/>
+                        </div>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="password" class="form-control" placeholder="Confirm Password" required>
+										<form:input type="password" class="form-control" path="confirmPassword" id="confirmPassword"
+										 placeholder="Confirm Password" required/>
+										 <div class="has-error">
+                            <form:errors path="confirmPassword" class="help-inline"/>
+                        </div>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="City" required>
+										<form:input type="text" class="form-control" path="city" id="city"
+										 placeholder="City" required/>
+										 <div class="has-error">
+                            <form:errors path="city" class="help-inline"/>
+                        </div>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="phone" class="form-control" placeholder="Phone No">
+										<form:input type="phone" class="form-control" path="contactNo" id="contactNo"
+										 placeholder="Phone No"/>
+										 <div class="has-error">
+                            <form:errors path="city" class="help-inline"/>
+                        </div>
 									</div>
 								</div>
 								<div class="col-md-12">
@@ -141,7 +173,7 @@
 										<input type="submit" value="Join Us" class="btn btn-primary">
 									</div>
 								</div>
-							</form>
+							</form:form>
 							</div>
 						</div>
 						<div class="col-md-4"></div>

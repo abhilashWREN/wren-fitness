@@ -21,26 +21,20 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 	
 	public User findById(int id) {
 		User user = getByKey(id);
-		if(user!=null){
-			Hibernate.initialize(user.getUserProfiles());
-		}
 		return user;
 	}
 
-	public User findBySSO(String sso) {
-		logger.info("SSO : {}", sso);
+	public User findByUserName(String userName) {
+		logger.info("userName : {}", userName);
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("ssoId", sso));
+		crit.add(Restrictions.eq("Username", userName));
 		User user = (User)crit.uniqueResult();
-		if(user!=null){
-			Hibernate.initialize(user.getUserProfiles());
-		}
 		return user;
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<User> findAllUsers() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("firstName"));
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("Username"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
 		List<User> users = (List<User>) criteria.list();
 		
@@ -57,9 +51,9 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 		persist(user);
 	}
 
-	public void deleteBySSO(String sso) {
+	public void deleteByUserName(String userName) {
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("ssoId", sso));
+		crit.add(Restrictions.eq("Username", userName));
 		User user = (User)crit.uniqueResult();
 		delete(user);
 	}

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html class="no-js">
 	<head>
 	<meta charset="utf-8">
@@ -67,7 +69,7 @@
 								<li><a href="#" class="fh5co-sub-ddown">User</a>
 									<ul class="fh5co-sub-menu" >
 										<li><a href="/viewprofile">My Profile</a></li>
-										<li><a href="#" target="_blank">Logout</a></li>
+										<li><a href="<c:url value="/logout" />" target="_blank">Logout</a></li>
 									</ul>
 								</li>
 								<li  class="active"><a href="/login">Login</a></li>
@@ -83,10 +85,21 @@
 		<div id="fh5co-programs-section">
 			<div class="container">
 				<div class="row"><br>
+				<c:url var="loginUrl" value="/login" />
 					<div class="col-md-6 animate-box" style="border:1px solid #4cb648;padding:20px;border-radius:5px;">
 							<div class="row">
 								<div class="col-md-12 text-center"><h2 style="color:#fff;">Login to Your Account!</h2></div>
-								<form action="#" method="post">
+								<form action="${loginUrl}" method="post">
+								<c:if test="${param.error != null}">
+                                <div class="alert alert-danger">
+                                    <p>Invalid username and password.</p>
+                                </div>
+                            </c:if>
+                            <c:if test="${param.logout != null}">
+                                <div class="alert alert-success">
+                                    <p>You have been logged out successfully.</p>
+                                </div>
+                            </c:if>
 								<div class="col-md-12">
 									<div class="form-group">
 										<input type="email" class="form-control" placeholder="Email" required>
@@ -105,6 +118,7 @@
 								<div class="col-md-6" style="text-align:right;"><a href="#"> Forget Your Password?</a></div>
 									<br><br><br>
 								</div>
+								 <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
 								<div class="col-md-12 text-center">
 									<div class="form-group">
 										<input type="submit" value="Login" class="btn btn-primary"> 
