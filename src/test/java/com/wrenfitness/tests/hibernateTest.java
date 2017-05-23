@@ -2,6 +2,7 @@ package com.wrenfitness.tests;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class hibernateTest {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	@Ignore
 	@Test
 	public void checkHibernateConfig() {
 		System.out.println("Check Config");
