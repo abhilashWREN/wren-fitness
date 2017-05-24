@@ -18,38 +18,34 @@ import com.wrenfitness.model.User;
 import com.wrenfitness.model.Role;
 import com.wrenfitness.service.UserService;
 
-
 @Service("customUserDetailsService")
-public class CustomUserDetailsService implements UserDetailsService{
+public class CustomUserDetailsService implements UserDetailsService {
 
 	static final Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
-	
+
 	@Autowired
 	private UserService userService;
-	
-	@Transactional(readOnly=true)
-	public UserDetails loadUserByUsername(String userName)
-			throws UsernameNotFoundException {
+
+	@Transactional(readOnly = true)
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		User user = userService.findByUserName(userName);
 		logger.info("User : {}", user);
-		if(user==null){
+		if (user == null) {
 			logger.info("User not found");
 			throw new UsernameNotFoundException("Username not found");
 		}
-			return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), 
-				 true, true, true, true, getGrantedAuthorities(user));
+		return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), true,
+				true, true, true, getGrantedAuthorities(user));
 	}
 
-	
-	private List<GrantedAuthority> getGrantedAuthorities(User user){
+	private List<GrantedAuthority> getGrantedAuthorities(User user) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		
-		for(Role userProfile : user.getUserProfiles()){
-			logger.info("UserProfile : {}", userProfile);
-			authorities.add(new SimpleGrantedAuthority("ROLE_"+userProfile.getType()));
-		}
+		Role userRole = user.getRole();
+		logger.info("UserProfile : {}", userRole);
+		authorities.add(new SimpleGrantedAuthority("ROLE_" + userRole.getType()));
+
 		logger.info("authorities : {}", authorities);
 		return authorities;
 	}
-	
+
 }

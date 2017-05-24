@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html class="no-js">
 	<head>
@@ -24,22 +24,22 @@
 	<link rel="shortcut icon" href="favicon.ico">
 
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'>
-	 <link type="text/css" rel="stylesheet" href="css/dyscrollup.min.css">
+	 <link type="text/css" rel="stylesheet" href="<c:url value='/resources/css/dyscrollup.min.css' />">
     
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/animate.css' />">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/icomoon.css' />">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.css' />">
 	<!-- Superfish -->
-	<link rel="stylesheet" href="css/superfish.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/superfish.css' />">
 
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/style.css' />">
 
 
 	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="<c:url value='/resources/js/modernizr-2.6.2.min.js' />"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -67,7 +67,7 @@
 										<li><a href="/viewevent">View My Event</a></li>
 									</ul>
 								</li>
-								<li  class="active"><a href="/register">Register</a></li>
+								<li  class="active"><a href="/newuser">Register</a></li>
 								<li><a href="#" class="fh5co-sub-ddown">User</a>
 									<ul class="fh5co-sub-menu" >
 										<li><a href="/viewprofile">My Profile</a></li>
@@ -83,7 +83,7 @@
 			</header>		
 		</div>
 		<!-- end:fh5co-header -->
-		<div class="fh5co-parallax" style="background-image: url(images/image9.jpg);" data-stellar-background-ratio="0.2">
+		<div class="fh5co-parallax" style="background-image: url(<c:url value='/resources/images/image9.jpg' />);" data-stellar-background-ratio="0.2">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
@@ -103,68 +103,67 @@
 					<div class="col-md-8 animate-box">
 							<div class="row">
 								<div class="col-md-12 text-center"><h2>Create Your Account With Us!</h2></div>
-								<div class="col-md-6">
-								<form:form method="post" modelAttribute="user">
-								<form:input type="hidden" path="id" id="id"/>
+								<f:form method="post" modelAttribute="user">
+								<div class="col-md-6">		
+								<f:input type="hidden" path="id" id="id"/>
 										<div class="form-group">
-											<form:input type="text" class="form-control" path="firstName" id="firstName"
-												placeholder="Firstname" required />
+											<f:input type="text" class="form-control" path="userProfile.firstName"
+												id="firstName" placeholder="FirstName"/>
 											<div class="has-error">
-												<form:errors path="firstName" class="help-inline" />
+												<f:errors path="userProfile.firstName" class="help-inline" />
 											</div>
-										</div>
-										</div>
+										</div></div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<form:input type="text" class="form-control" path="lastName" id="lastName"
-										placeholder="Lastname" required/>
+										<f:input type="text" class="form-control" path="userProfile.lastName" id="lastName"
+										placeholder="Last Name"/>
 										<div class="has-error">
-                            <form:errors path="lastName" class="help-inline"/>
+                            <f:errors path="userProfile.lastName" class="help-inline"/>
                         </div>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<form:input type="email" class="form-control" path="email" id="email"
-										placeholder="Email" required/>
+										<f:input type="email" class="form-control" path="email" id="email"
+										placeholder="Email"/>
 										<div class="has-error">
-                            <form:errors path="email" class="help-inline"/>
+                            <f:errors path="email" class="help-inline"/>
                         </div>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<form:input type="password" class="form-control" path="password" id="password"
-										 placeholder="Password" required/>
+										<f:input type="password" class="form-control" path="password" id="password"
+										placeholder="Password"/>
 										 <div class="has-error">
-                            <form:errors path="password" class="help-inline"/>
+                            <f:errors path="password" class="help-inline"/>
                         </div>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<form:input type="password" class="form-control" path="confirmPassword" id="confirmPassword"
-										 placeholder="Confirm Password" required/>
+										<f:input type="password" class="form-control" path="confirmPassword"
+										 id="confirmPassword" placeholder="Confirm Password"/>
 										 <div class="has-error">
-                            <form:errors path="confirmPassword" class="help-inline"/>
+                            <f:errors path="confirmPassword" class="help-inline"/>
                         </div>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<form:input type="text" class="form-control" path="city" id="city"
-										 placeholder="City" required/>
+										<f:input type="text" class="form-control" path="userProfile.city" id="city"
+										placeholder="City"/>
 										 <div class="has-error">
-                            <form:errors path="city" class="help-inline"/>
+                            <f:errors path="userProfile.city" class="help-inline"/>
                         </div>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<form:input type="phone" class="form-control" path="contactNo" id="contactNo"
-										 placeholder="Phone No"/>
+										<f:input type="phone" class="form-control" path="userProfile.contactNumber" 
+										id="contactNumber" placeholder="Contact Number"/>
 										 <div class="has-error">
-                            <form:errors path="city" class="help-inline"/>
+                            <f:errors path="userProfile.contactNumber" class="help-inline"/>
                         </div>
 									</div>
 								</div>
@@ -173,7 +172,7 @@
 										<input type="submit" value="Join Us" class="btn btn-primary">
 									</div>
 								</div>
-							</form:form>
+							</f:form>
 							</div>
 						</div>
 						<div class="col-md-4"></div>
@@ -205,7 +204,7 @@
 							<form class="contact-form">
 								<div class="form-group">
 									<label for="name" class="sr-only">Name</label>
-									<input type="name" class="form-control" id="name" placeholder="Name">
+									<input type="text" class="form-control" id="name" placeholder="Name">
 								</div>
 								<div class="form-group">
 									<label for="email" class="sr-only">Email</label>
@@ -245,29 +244,29 @@
 
 	<!-- jQuery -->
 
-
-	<script src="js/jquery.min.js"></script>
+	<script src="<c:url value='/resources/js/jquery.min.js' />"></script>
 	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="<c:url value='/resources/js/jquery.easing.1.3.js' />"></script>
 	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="<c:url value='/resources/js/bootstrap.min.js' />"></script>
 	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="<c:url value='/resources/js/jquery.waypoints.min.js' />"></script>
 	<!-- Stellar -->
-	<script src="js/jquery.stellar.min.js"></script>
+	<script src="<c:url value='/resources/js/jquery.stellar.min.js' />"></script>
 	<!-- Superfish -->
-	<script src="js/hoverIntent.js"></script>
-	<script src="js/superfish.js"></script>
+	<script src="<c:url value='/resources/js/hoverIntent.js' />"></script>
+	<script src="<c:url value='/resources/js/superfish.js' />"></script>
 
 	<!-- Main JS (Do not remove) -->
-	<script src="js/main.js"></script>
-
-	 <script type="text/javascript" src="js/dyscrollup.min.js"></script>
+	<script src="<c:url value='/resources/js/main.js' />"></script>
+	 <script type="text/javascript" src="<c:url value='/resources/js/dyscrollup.min.js' />"></script>
 
 	<script type="text/javascript">
-		   dyscrollup.init({image : 'images/36.png'});
+		dyscrollup.init({
+			image : '<c:url value='/resources/images/36.png' />'
+		});
 	</script>
-	
-	</body>
+
+</body>
 </html>
 

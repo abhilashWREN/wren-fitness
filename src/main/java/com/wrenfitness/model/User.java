@@ -35,6 +35,8 @@ public class User implements Serializable{
 	@Column(name="Password", nullable=false)
 	private String password;
 		
+	private String confirmPassword;
+	
 	@NotEmpty
 	@Column(name="Email", nullable=false)
 	private String email;
@@ -47,7 +49,7 @@ public class User implements Serializable{
 	@NotEmpty
 	@OneToOne
 	@JoinColumn(name="ProfileID")
-	private Role userProfile;
+	private UserProfile userProfile;
 
 	public Integer getId() {
 		return id;
@@ -90,12 +92,20 @@ public class User implements Serializable{
 		this.role = role;
 	}
 
-	public Role getUserProfile() {
+	public UserProfile getUserProfile() {
 		return userProfile;
 	}
 
-	public void setUserProfile(Role userProfile) {
+	public void setUserProfile(UserProfile userProfile) {
 		this.userProfile = userProfile;
+	}
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 	@Override
@@ -103,7 +113,7 @@ public class User implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((ssoId == null) ? 0 : ssoId.hashCode());
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
 
@@ -121,11 +131,6 @@ public class User implements Serializable{
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (ssoId == null) {
-			if (other.ssoId != null)
-				return false;
-		} else if (!ssoId.equals(other.ssoId))
-			return false;
 		return true;
 	}
 
@@ -135,8 +140,7 @@ public class User implements Serializable{
 	 */
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", ssoId=" + ssoId + ", password=" + password
-				+ ", firstName=" + firstName + ", lastName=" + lastName
+		return "User [id=" + id + ", userName=" + userName + ", password=" + password
 				+ ", email=" + email + "]";
 	}
 

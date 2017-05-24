@@ -22,22 +22,22 @@
 	<link rel="shortcut icon" href="favicon.ico">
 
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'>
-	 <link type="text/css" rel="stylesheet" href="resources/css/dyscrollup.min.css">
+	 <link type="text/css" rel="stylesheet" href="<c:url value='/resources/css/dyscrollup.min.css' />"></link>
        
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="resources/css/animate.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/animate.css' />"></link>
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="resources/css/icomoon.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/icomoon.css' />"></link>
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.css' />"></link>
 	<!-- Superfish -->
-	<link rel="stylesheet" href="resources/css/superfish.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/superfish.css' />"></link>
 
-	<link rel="stylesheet" href="resources/css/style.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/style.css' />"></link>
 
 
 	<!-- Modernizr JS -->
-	<script src="resources/js/modernizr-2.6.2.min.js"></script>
+	<script src="<c:url value='/resources/js/modernizr-2.6.2.min.js' />"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="resources/js/respond.min.js"></script>
@@ -57,7 +57,7 @@
 						<nav id="fh5co-menu-wrap" role="navigation">
 							<ul class="sf-menu" id="fh5co-primary-menu" >
 								<li class="active">
-									<a href="/home">Home</a>
+									<a href="/">Home</a>
 								</li>	
 								<li><a href="#" class="fh5co-sub-ddown">Event</a>
 									<ul class="fh5co-sub-menu">
@@ -65,11 +65,11 @@
 										<li><a href="/viewevent">View My Event</a></li>
 									</ul>
 								</li>
-								<li><a href="/register">Register</a></li>
+								<li><a href="/newuser">Register</a></li>
 								<li><a href="#" class="fh5co-sub-ddown">User</a>
 									<ul class="fh5co-sub-menu" >
 										<li><a href="/viewprofile">My Profile</a></li>
-										<li><a href="#" target="_blank">Logout</a></li>
+										<li><a href="/logout" target="_blank">Logout</a></li>
 									</ul>
 								</li>
 								<li><a href="/login">Login</a></li>
@@ -95,19 +95,19 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="resources/images/slide (1).jpg" >
+                        <img src="<c:url value='/resources/images/slide (1).jpg' />" >
 					</div>
 					 <div class="item">
-                        <img src="resources/images/slide (2).jpg" >
+                        <img src="<c:url value='/resources/images/slide (2).jpg' />" >
 					</div>
 					 <div class="item">
-                        <img src="resources/images/slide (3).jpg">
+                        <img src="<c:url value='/resources/images/slide (3).jpg' />">
 					</div>
                     <div class="item">
-                        <img src="resources/images/slide (4).jpg">
+                        <img src="<c:url value='/resources/images/slide (4).jpg' />">
                     </div>
                     <div class="item">
-                        <img src="resources/images/slide (5).jpg">
+                        <img src="<c:url value='/resources/images/slide (5).jpg' />">
                     </div>
                 </div>
                 <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -124,8 +124,8 @@
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </h3>
                     <div class="">
-                        <a class="btn btn-clear btn-sm btn-min-block" href="login.html">Login</a><a class="btn btn-clear btn-sm btn-min-block"
-                            href="register.html">Registration</a></div>
+                        <a class="btn btn-clear btn-sm btn-min-block" href="/login">Login</a><a class="btn btn-clear btn-sm btn-min-block"
+                            href="/newuser">Registration</a></div>
                 </div>
             </div>
         </div>
@@ -161,7 +161,7 @@
 							<div class="schedule-content active" data-day="sunday">
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-dumbell.svg" alt="Cycling">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="Cycling">
 										<small>06AM-7AM</small>
 										<h3>Body Building</h3>
 										<span>John Doe</span>
@@ -169,7 +169,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-yoga.svg" alt="">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="">
 										<small>06AM-7AM</small>
 										<h3>Yoga Programs</h3>
 										<span>John Doe</span>
@@ -177,7 +177,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-cycling.svg" alt="">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="">
 										<small>06AM-7AM</small>
 										<h3>Cycling Program</h3>
 										<span>John Doe</span>
@@ -185,7 +185,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-boxing.svg" alt="Cycling">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="Cycling">
 										<small>06AM-7AM</small>
 										<h3>Boxing Fitness</h3>
 										<span>John Doe</span>
@@ -197,7 +197,7 @@
 							<div class="schedule-content" data-day="monday">
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-yoga.svg" alt="">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="">
 										<small>06AM-7AM</small>
 										<h3>Yoga Programs</h3>
 										<span>John Doe</span>
@@ -205,7 +205,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-dumbell.svg" alt="Cycling">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="Cycling">
 										<small>06AM-7AM</small>
 										<h3>Body Building</h3>
 										<span>John Doe</span>
@@ -213,7 +213,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-boxing.svg" alt="Cycling">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="Cycling">
 										<small>06AM-7AM</small>
 										<h3>Boxing Fitness</h3>
 										<span>John Doe</span>
@@ -221,7 +221,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-cycling.svg" alt="">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="">
 										<small>06AM-7AM</small>
 										<h3>Cycling Program</h3>
 										<span>John Doe</span>
@@ -234,7 +234,7 @@
 							<div class="schedule-content" data-day="tuesday">
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-dumbell.svg" alt="Cycling">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="Cycling">
 										<small>06AM-7AM</small>
 										<h3>Body Building</h3>
 										<span>John Doe</span>
@@ -242,7 +242,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-yoga.svg" alt="">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="">
 										<small>06AM-7AM</small>
 										<h3>Yoga Programs</h3>
 										<span>John Doe</span>
@@ -250,7 +250,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-cycling.svg" alt="">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="">
 										<small>06AM-7AM</small>
 										<h3>Cycling Program</h3>
 										<span>John Doe</span>
@@ -258,7 +258,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-boxing.svg" alt="Cycling">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="Cycling">
 										<small>06AM-7AM</small>
 										<h3>Boxing Fitness</h3>
 										<span>John Dose</span>
@@ -270,7 +270,7 @@
 							<div class="schedule-content" data-day="wednesday">
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-yoga.svg" alt="">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="">
 										<small>06AM-7AM</small>
 										<h3>Yoga Programs</h3>
 										<span>John Doe</span>
@@ -278,7 +278,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-dumbell.svg" alt="Cycling">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="Cycling">
 										<small>06AM-7AM</small>
 										<h3>Body Building</h3>
 										<span>John Doe</span>
@@ -286,7 +286,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-boxing.svg" alt="Cycling">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="Cycling">
 										<small>06AM-7AM</small>
 										<h3>Boxing Fitness</h3>
 										<span>John Doe</span>
@@ -294,7 +294,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-cycling.svg" alt="">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="">
 										<small>06AM-7AM</small>
 										<h3>Cycling Program</h3>
 										<span>John Doe</span>
@@ -306,7 +306,7 @@
 							<div class="schedule-content" data-day="thursday">
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-dumbell.svg" alt="Cycling">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="Cycling">
 										<small>06AM-7AM</small>
 										<h3>Body Building</h3>
 										<span>John Doe</span>
@@ -314,7 +314,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-yoga.svg" alt="">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="">
 										<small>06AM-7AM</small>
 										<h3>Yoga Programs</h3>
 										<span>John Doe</span>
@@ -322,7 +322,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-cycling.svg" alt="">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="">
 										<small>06AM-7AM</small>
 										<h3>Cycling Program</h3>
 										<span>John Doe</span>
@@ -330,7 +330,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-boxing.svg" alt="Cycling">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="Cycling">
 										<small>06AM-7AM</small>
 										<h3>Boxing Fitness</h3>
 										<span>John Dose</span>
@@ -342,7 +342,7 @@
 							<div class="schedule-content" data-day="friday">
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-yoga.svg" alt="">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="">
 										<small>06AM-7AM</small>
 										<h3>Yoga Programs</h3>
 										<span>John Doe</span>
@@ -350,7 +350,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-dumbell.svg" alt="Cycling">
+										<img src="<c:url value='/resources/images/fit-dumbell.svg' />" alt="Cycling">
 										<small>06AM-7AM</small>
 										<h3>Body Building</h3>
 										<span>John Doe</span>
@@ -358,7 +358,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-boxing.svg" alt="Cycling">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="Cycling">
 										<small>06AM-7AM</small>
 										<h3>Boxing Fitness</h3>
 										<span>John Doe</span>
@@ -366,7 +366,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-cycling.svg" alt="">
+										<img src="<c:url value='/resources/images/fit-cycling.svg' />" alt="">
 										<small>06AM-7AM</small>
 										<h3>Cycling Program</h3>
 										<span>John Doe</span>
@@ -378,7 +378,7 @@
 							<div class="schedule-content" data-day="saturday">
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-dumbell.svg" alt="Cycling">
+										<img src="<c:url value='/resources/images/fit-dumbell.svg' />" alt="Cycling">
 										<small>06AM-7AM</small>
 										<h3>Body Building</h3>
 										<span>John Doe</span>
@@ -386,7 +386,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-yoga.svg" alt="">
+										<img src="<c:url value='/resources/images/fit-yoga.svg' />" alt="">
 										<small>06AM-7AM</small>
 										<h3>Yoga Programs</h3>
 										<span>John Doe</span>
@@ -394,7 +394,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-cycling.svg" alt="">
+										<img src="<c:url value='/resources/images/fit-cycling.svg' />" alt="">
 										<small>06AM-7AM</small>
 										<h3>Cycling Program</h3>
 										<span>John Doe</span>
@@ -402,7 +402,7 @@
 								</div>
 								<div class="col-md-3 col-sm-6">
 									<div class="program program-schedule">
-										<img src="resources/images/fit-boxing.svg" alt="Cycling">
+										<img src="<c:url value='/resources/images/fit-boxing.svg' />" alt="Cycling">
 										<small>06AM-7AM</small>
 										<h3>Boxing Fitness</h3>
 										<span>John Doe</span>
@@ -535,25 +535,25 @@
 	<!-- jQuery -->
 
 
-	<script src="resources/js/jquery.min.js"></script>
+	<script src="<c:url value='/resources/js/jquery.min.js' />"></script>
 	<!-- jQuery Easing -->
-	<script src="resources/js/jquery.easing.1.3.js"></script>
+	<script src="<c:url value='/resources/js/jquery.easing.1.3.js' />"></script>
 	<!-- Bootstrap -->
-	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="<c:url value='/resources/js/bootstrap.min.js' />"></script>
 	<!-- Waypoints -->
-	<script src="resources/js/jquery.waypoints.min.js"></script>
+	<script src="<c:url value='/resources/js/jquery.waypoints.min.js' />"></script>
 	<!-- Stellar -->
-	<script src="resources/js/jquery.stellar.min.js"></script>
+	<script src="<c:url value='/resources/js/jquery.stellar.min.js' />"></script>
 	<!-- Superfish -->
-	<script src="resources/js/hoverIntent.js"></script>
-	<script src="resources/js/superfish.js"></script>
+	<script src="<c:url value='/resources/js/hoverIntent.js' />"></script>
+	<script src="<c:url value='/resources/js/superfish.js' />"></script>
 
 	<!-- Main JS (Do not remove) -->
-	<script src="resources/js/main.js"></script>
-	 <script type="text/javascript" src="resources/js/dyscrollup.min.js"></script>
+	<script src="<c:url value='/resources/js/main.js' />"></script>
+	 <script type="text/javascript" src="<c:url value='/resources/js/dyscrollup.min.js' />"></script>
 
 	<script type="text/javascript">
-		   dyscrollup.init({image : 'resources/images/36.png'});
+			dyscrollup.init({image : '<c:url value='/resources/images/36.png' />'});
 	</script>
 	</body>
 </html>

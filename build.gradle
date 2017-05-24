@@ -11,7 +11,7 @@ apply plugin: 'org.akhikhl.gretty'
 
 gretty {
     port = 8501
-    contextPath = '/wren-fitness'
+    contextPath = '/'
     servletContainer = 'tomcat8'
 }
 

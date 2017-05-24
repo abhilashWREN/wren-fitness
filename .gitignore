@@ -4,11 +4,10 @@
 .project
 .settings/
 .classpath
+.*
 *.iml
-.gradle/
-gradle/
 .gradle/*
 .gradle*
-*.gradle/
 *.gradle/*.lock
 *.gradle/*.bin
+!/.gitignore

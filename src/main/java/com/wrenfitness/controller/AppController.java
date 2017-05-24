@@ -53,13 +53,9 @@ public class AppController {
 	/**
 	 * This method will list all existing users.
 	 */
-	@RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String listUsers(ModelMap model) {
-
-		List<User> users = userService.findAllUsers();
-		model.addAttribute("users", users);
-		model.addAttribute("loggedinuser", getPrincipal());
-		return "userslist";
+		return "index";
 	}
 
 	/**
@@ -69,9 +65,8 @@ public class AppController {
 	public String newUser(ModelMap model) {
 		User user = new User();
 		model.addAttribute("user", user);
-		model.addAttribute("edit", false);
 		model.addAttribute("loggedinuser", getPrincipal());
-		return "registration";
+		return "register";
 	}
 
 	/**
@@ -83,7 +78,7 @@ public class AppController {
 			ModelMap model) {
 
 		if (result.hasErrors()) {
-			return "registration";
+			return "register";
 		}
 
 		/*
@@ -95,23 +90,23 @@ public class AppController {
 		 * 
 		 */
 		if(!userService.isUserNameUnique(user.getId(), user.getUserName())){
-			FieldError ssoError =new FieldError("user","ssoId",messageSource.getMessage("non.unique.ssoId", new String[]{user.getSsoId()}, Locale.getDefault()));
+			FieldError ssoError =new FieldError("user","userName",messageSource.getMessage("non.unique.ssoId", new String[]{user.getUserName()}, Locale.getDefault()));
 		    result.addError(ssoError);
-			return "registration";
+			return "register";
 		}
 		
 		userService.saveUser(user);
 
-		model.addAttribute("success", "User " + user.getFirstName() + " "+ user.getLastName() + " registered successfully");
+		model.addAttribute("success", "User " + user.getUserProfile().getFirstName() + " "+ user.getUserProfile().getLastName() + " registered successfully");
 		model.addAttribute("loggedinuser", getPrincipal());
 		//return "success";
-		return "registrationsuccess";
+		return "index";
 	}
 
-
-	/**
+/*
+	*//**
 	 * This method will provide the medium to update an existing user.
-	 */
+	 *//*
 	@RequestMapping(value = { "/edit-user-{ssoId}" }, method = RequestMethod.GET)
 	public String editUser(@PathVariable String ssoId, ModelMap model) {
 		User user = userService.findBySSO(ssoId);
@@ -121,10 +116,10 @@ public class AppController {
 		return "registration";
 	}
 	
-	/**
+	*//**
 	 * This method will be called on form submission, handling POST request for
 	 * updating user in database. It also validates the user input
-	 */
+	 *//*
 	@RequestMapping(value = { "/edit-user-{ssoId}" }, method = RequestMethod.POST)
 	public String updateUser(@Valid User user, BindingResult result,
 			ModelMap model, @PathVariable String ssoId) {
@@ -133,12 +128,12 @@ public class AppController {
 			return "registration";
 		}
 
-		/*//Uncomment below 'if block' if you WANT TO ALLOW UPDATING SSO_ID in UI which is a unique key to a User.
+		//Uncomment below 'if block' if you WANT TO ALLOW UPDATING SSO_ID in UI which is a unique key to a User.
 		if(!userService.isUserSSOUnique(user.getId(), user.getSsoId())){
 			FieldError ssoError =new FieldError("user","ssoId",messageSource.getMessage("non.unique.ssoId", new String[]{user.getSsoId()}, Locale.getDefault()));
 		    result.addError(ssoError);
 			return "registration";
-		}*/
+		}
 
 
 		userService.updateUser(user);
@@ -149,9 +144,9 @@ public class AppController {
 	}
 
 	
-	/**
+	*//**
 	 * This method will delete an user by it's SSOID value.
-	 */
+	 *//*
 	@RequestMapping(value = { "/delete-user-{ssoId}" }, method = RequestMethod.GET)
 	public String deleteUser(@PathVariable String ssoId) {
 		userService.deleteUserBySSO(ssoId);
@@ -159,14 +154,14 @@ public class AppController {
 	}
 	
 
-	/**
+	*//**
 	 * This method will provide UserProfile list to views
-	 */
+	 *//*
 	@ModelAttribute("roles")
 	public List<Role> initializeProfiles() {
 		return userProfileService.findAll();
 	}
-	
+	*/
 	/**
 	 * This method handles Access-Denied redirect.
 	 */
@@ -185,7 +180,7 @@ public class AppController {
 		if (isCurrentAuthenticationAnonymous()) {
 			return "login";
 	    } else {
-	    	return "redirect:/list";  
+	    	return "redirect:/home";  
 	    }
 	}
 
