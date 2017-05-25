@@ -2,6 +2,7 @@ package com.wrenfitness.security;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.wrenfitness.model.User;
+import com.wrenfitness.model.UserRole;
 import com.wrenfitness.model.Role;
 import com.wrenfitness.service.UserService;
 
@@ -40,11 +42,14 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	private List<GrantedAuthority> getGrantedAuthorities(User user) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		Role userRole = user.getRole();
-		logger.info("UserProfile : {}", userRole);
-		authorities.add(new SimpleGrantedAuthority("ROLE_" + userRole.getType()));
+		Set<UserRole> userRoles = user.getUserRoles();
+		for(UserRole userRole : userRoles) {
+			logger.info("UserProfile : {}", userRole);
+			authorities.add(new SimpleGrantedAuthority("ROLE_" + userRole.getRole().getType()));
 
-		logger.info("authorities : {}", authorities);
+			logger.info("authorities : {}", authorities);
+		}
+		
 		return authorities;
 	}
 

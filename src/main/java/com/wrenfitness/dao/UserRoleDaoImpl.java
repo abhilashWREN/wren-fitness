@@ -12,11 +12,12 @@ import org.springframework.stereotype.Repository;
 
 import com.wrenfitness.model.Role;
 import com.wrenfitness.model.User;
+import com.wrenfitness.model.UserRole;
 
 
 
 @Repository("userRoleDao")
-public class UserRoleDaoImpl extends AbstractDao<Integer, Role> implements UserRoleDao {
+public class UserRoleDaoImpl extends AbstractDao<Integer, UserRole> implements UserRoleDao {
 
 	static final Logger logger = LoggerFactory.getLogger(UserRoleDaoImpl.class);
 
@@ -47,18 +48,11 @@ public class UserRoleDaoImpl extends AbstractDao<Integer, Role> implements UserR
 	}*/
 
 	@Override
-	public Role findById(int id) {
+	public List<UserRole> findAllUserRoles() {
 		// TODO Auto-generated method stub
-		Role role = getByKey(id);
-		return role;
-	}
-
-	@Override
-	public List<Role> findAllRoles() {
-		// TODO Auto-generated method stub
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("RoleID"));
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("AccountID"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
-		List<Role> roles = (List<Role>) criteria.list();
+		List<UserRole> roles = (List<UserRole>) criteria.list();
 		
 		// No need to fetch userProfiles since we are not showing them on list page. Let them lazy load. 
 		// Uncomment below lines for eagerly fetching of userProfiles if you want.
@@ -67,6 +61,14 @@ public class UserRoleDaoImpl extends AbstractDao<Integer, Role> implements UserR
 			Hibernate.initialize(user.getUserProfiles());
 		}*/
 		return roles;
+	}
+
+	@Override
+	public UserRole findByAccountId(int id) {
+		// TODO Auto-generated method stub
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("AccountID"));
+		criteria.add(Restrictions.eq("AccountID", id));
+		return (UserRole)criteria.uniqueResult();
 	}
 
 }

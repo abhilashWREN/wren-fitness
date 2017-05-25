@@ -10,6 +10,7 @@ import com.wrenfitness.dao.UserProfileDao;
 import com.wrenfitness.dao.UserRoleDao;
 import com.wrenfitness.model.Role;
 import com.wrenfitness.model.UserProfile;
+import com.wrenfitness.model.UserRole;
 
 
 @Service("userRoleService")
@@ -20,12 +21,12 @@ public class UserRoleServiceImpl implements UserRoleService{
 	UserRoleDao dao;
 
 	@Override
-	public Role findById(int id) {
-		return dao.findById(id);
+	public UserRole findByAccountId(int id) {
+		return dao.findByAccountId(id);
 	}
 
 	@Override
-	public List<Role> findAllRoles() {
-		return dao.findAllRoles();
+	public List<UserRole> findAllUserRoles() {
+		return dao.findAllUserRoles();
 	}
 }

@@ -1,0 +1,148 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 22, 2017 at 12:19 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `logindb`
+--
+
+--
+-- Drop tables if exists
+--
+DROP TABLE IF EXISTS `userroles`;
+DROP TABLE IF EXISTS `roles`;
+DROP TABLE IF EXISTS `accounts`;
+DROP TABLE IF EXISTS `userprofile`;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounts`
+--
+
+CREATE TABLE `accounts` (
+  `AccountID` int(11) NOT NULL,
+  `Username` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userroles`
+--
+CREATE TABLE `userroles` (
+ `UserRoleID` int(11) NOT NULL,
+  `AccountID` int(11) NOT NULL,
+  `RoleID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `RoleID` int(11) NOT NULL,
+  `Description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userprofile`
+--
+
+CREATE TABLE `userprofile` (
+  `ProfileID` int(11) NOT NULL,
+  `AccountID` int(11) NOT NULL,
+  `FirstName` varchar(255) NOT NULL,
+  `LastName` varchar(255) NOT NULL,
+  `City` varchar(255) NOT NULL,
+  `ContactNumber` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`RoleID`);
+
+--
+-- Indexes for table `accounts`
+--
+ALTER TABLE `accounts`
+  ADD PRIMARY KEY (`AccountID`),
+  ADD UNIQUE KEY `Username` (`Username`),
+  ADD UNIQUE KEY `Email` (`Email`);
+  
+
+--
+-- Indexes for table `userprofile`
+--
+ALTER TABLE `userprofile`
+  ADD PRIMARY KEY (`ProfileID`),
+  ADD UNIQUE KEY `ContactNumber` (`ContactNumber`);
+  
+  
+ALTER TABLE `userroles`
+  ADD PRIMARY KEY (`UserRoleID`);
+  
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `accounts`
+--
+ALTER TABLE `accounts`
+  MODIFY `AccountID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `RoleID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `userprofile`
+--
+ALTER TABLE `userprofile`
+  MODIFY `ProfileID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Add Foreign Keys for table `userroles`
+--
+
+ALTER TABLE `userroles`
+ADD CONSTRAINT FK_ACCOUNT_PROFILE FOREIGN KEY (AccountID) REFERENCES accounts(AccountID) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT FK_ACCOUNT_ROLE FOREIGN KEY (RoleID) REFERENCES roles(RoleID);
+
+
+CREATE TABLE persistent_logins (
+    Username VARCHAR(64) NOT NULL,
+    series VARCHAR(64) NOT NULL,
+    token VARCHAR(64) NOT NULL,
+    last_used TIMESTAMP NOT NULL,
+    PRIMARY KEY (series)
+);
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

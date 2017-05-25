@@ -4,12 +4,13 @@ import java.util.List;
 
 import com.wrenfitness.model.Role;
 import com.wrenfitness.model.UserProfile;
+import com.wrenfitness.model.UserRole;
 
 
 public interface UserRoleService {
 
-	Role findById(int id);
+	UserRole findByAccountId(int id);
 	
-	List<Role> findAllRoles();
+	List<UserRole> findAllUserRoles();
 	
 }

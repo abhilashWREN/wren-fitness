@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +30,8 @@ public class UserProfile implements Serializable{
 	
 	@Column(name="ContactNumber")
 	private String contactNumber;
+	
+	private User user;
 
 	public Integer getId() {
 		return id;
@@ -67,6 +71,16 @@ public class UserProfile implements Serializable{
 
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "AccountID")
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

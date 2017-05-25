@@ -1,18 +1,23 @@
 package com.wrenfitness.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="ROLE")
 public class Role implements Serializable{
 
+	private Set<UserRole> userRoles = new HashSet<UserRole>();
+	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="RoleID")
 	private Integer roleID;	
@@ -34,6 +39,15 @@ public class Role implements Serializable{
 
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	@OneToMany(mappedBy="roles")
+	public Set<UserRole> getUserRoles() {
+		return userRoles;
+	}
+
+	public void setUserRoles(Set<UserRole> userRoles) {
+		this.userRoles = userRoles;
 	}
 
 	@Override

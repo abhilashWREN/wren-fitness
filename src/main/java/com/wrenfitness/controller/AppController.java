@@ -97,7 +97,7 @@ public class AppController {
 		
 		userService.saveUser(user);
 
-		model.addAttribute("success", "User " + user.getUserProfile().getFirstName() + " "+ user.getUserProfile().getLastName() + " registered successfully");
+		//model.addAttribute("success", "User " + user.getUserProfile().getFirstName() + " "+ user.getUserProfile().getLastName() + " registered successfully");
 		model.addAttribute("loggedinuser", getPrincipal());
 		//return "success";
 		return "index";

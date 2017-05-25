@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -40,16 +41,9 @@ public class User implements Serializable{
 	@NotEmpty
 	@Column(name="Email", nullable=false)
 	private String email;
-
-	@NotEmpty
-	@OneToOne
-	@JoinColumn(name="RoleID")
-	private Role role;
 	
-	@NotEmpty
-	@OneToOne
-	@JoinColumn(name="ProfileID")
-	private UserProfile userProfile;
+	private Set<UserRole> userRoles = new HashSet<UserRole>();
+	private Set<UserProfile> userProfile = new HashSet<UserProfile>();
 
 	public Integer getId() {
 		return id;
@@ -84,28 +78,30 @@ public class User implements Serializable{
 		this.userName = userName;
 	}
 
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
-	public UserProfile getUserProfile() {
-		return userProfile;
-	}
-
-	public void setUserProfile(UserProfile userProfile) {
-		this.userProfile = userProfile;
-	}
-
 	public String getConfirmPassword() {
 		return confirmPassword;
 	}
 
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+
+	@OneToMany(mappedBy="accounts")
+	public Set<UserRole> getUserRoles() {
+		return userRoles;
+	}
+
+	public void setUserRoles(Set<UserRole> userRoles) {
+		this.userRoles = userRoles;
+	}
+	
+	@OneToMany(mappedBy="accounts")
+	public Set<UserProfile> getUserProfile() {
+		return userProfile;
+	}
+
+	public void setUserProfile(Set<UserProfile> userProfile) {
+		this.userProfile = userProfile;
 	}
 
 	@Override
