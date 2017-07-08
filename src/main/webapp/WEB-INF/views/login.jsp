@@ -52,27 +52,27 @@
 				<div class="container">
 					<div class="nav-header">
 						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-						<h1 id="fh5co-logo"><a href="/index">WREN Fit<span>ness</span></a></h1>
+						<h1 id="fh5co-logo"><a href="/wren-fitness/">WREN Fit<span>ness</span></a></h1>
 						<!-- START #fh5co-menu-wrap -->
 						<nav id="fh5co-menu-wrap" role="navigation">
 							<ul class="sf-menu" id="fh5co-primary-menu">
 								<li>
-									<a href="/index">Home</a>
+									<a href="/wren-fitness/">Home</a>
 								</li>	
-								<li><a href="#" class="fh5co-sub-ddown">Event</a>
+								<!-- <li><a href="#" class="fh5co-sub-ddown">Event</a>
 									<ul class="fh5co-sub-menu">
-										<li><a href="/schedule">Book an Event</a></li>
-										<li><a href="/viewevent">View My Event</a></li>
+										<li><a href="/wren-fitness/schedule">Book an Event</a></li>
+										<li><a href="/wren-fitness/viewevent">View My Event</a></li>
 									</ul>
-								</li>
+								</li> -->
 								<li><a href="/newuser">Register</a></li>
 								<li><a href="#" class="fh5co-sub-ddown">User</a>
 									<ul class="fh5co-sub-menu" >
-										<li><a href="/viewprofile">My Profile</a></li>
-										<li><a href="<c:url value="/logout" />" target="_blank">Logout</a></li>
+										<li><a href="/wren-fitness/viewprofile">My Profile</a></li>
+										<li><a href="/logout" >Logout</a></li>
 									</ul>
 								</li>
-								<li  class="active"><a href="/login">Login</a></li>
+								<li  class="active"><a href="/wren-fitness/login">Login</a></li>
 								
 							</ul>
 						</nav>
@@ -89,7 +89,7 @@
 					<div class="col-md-6 animate-box" style="border:1px solid #4cb648;padding:20px;border-radius:5px;">
 							<div class="row">
 								<div class="col-md-12 text-center"><h2 style="color:#fff;">Login to Your Account!</h2></div>
-								<form action="${loginUrl}" method="post">
+								<form action="/wren-fitness/login" method="post">
 								<c:if test="${param.error != null}">
                                 <div class="alert alert-danger">
                                     <p>Invalid username and password.</p>
@@ -128,7 +128,7 @@
 								</div>
 								<div class="col-md-12 text-center">
 									<div class="form-group">
-										Or <br> Don't have an Account?<a href="/newuser">&nbspCreate one</a>
+										Or <br> Don't have an Account?<a href="/wren-fitness/newuser">&nbspCreate one</a>
 									</div>
 								</div>
 								
@@ -208,6 +208,7 @@
 
 
 	<script src="<c:url value='/resources/js/jquery.min.js' />"></script>
+	<script src="<c:url value='/resources/js/jquery.migrate.js' />"></script>
 	<!-- jQuery Easing -->
 	<script src="<c:url value='/resources/js/jquery.easing.1.3.js' />"></script>
 	<!-- Bootstrap -->

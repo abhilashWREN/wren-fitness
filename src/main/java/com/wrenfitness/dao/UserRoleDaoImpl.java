@@ -16,12 +16,12 @@ import com.wrenfitness.model.UserRole;
 
 
 
-@Repository("userRoleDao")
+//@Repository("userRoleDao")
 public class UserRoleDaoImpl extends AbstractDao<Integer, UserRole> implements UserRoleDao {
 
-	static final Logger logger = LoggerFactory.getLogger(UserRoleDaoImpl.class);
+	/*static final Logger logger = LoggerFactory.getLogger(UserRoleDaoImpl.class);
 
-/*	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	public List<User> findAllUsers() {
 		Criteria criteria = createEntityCriteria().addOrder(Order.asc("Username"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
@@ -34,9 +34,9 @@ public class UserRoleDaoImpl extends AbstractDao<Integer, UserRole> implements U
 			Hibernate.initialize(user.getUserProfiles());
 		}
 		return users;
-	}*/
+	}
 
-	/*public void save(User user) {
+	public void save(User user) {
 		persist(user);
 	}
 
@@ -45,7 +45,7 @@ public class UserRoleDaoImpl extends AbstractDao<Integer, UserRole> implements U
 		crit.add(Restrictions.eq("Username", userName));
 		User user = (User)crit.uniqueResult();
 		delete(user);
-	}*/
+	}
 
 	@Override
 	public List<UserRole> findAllUserRoles() {
@@ -56,10 +56,10 @@ public class UserRoleDaoImpl extends AbstractDao<Integer, UserRole> implements U
 		
 		// No need to fetch userProfiles since we are not showing them on list page. Let them lazy load. 
 		// Uncomment below lines for eagerly fetching of userProfiles if you want.
-		/*
+		
 		for(User user : users){
 			Hibernate.initialize(user.getUserProfiles());
-		}*/
+		}
 		return roles;
 	}
 
@@ -70,5 +70,5 @@ public class UserRoleDaoImpl extends AbstractDao<Integer, UserRole> implements U
 		criteria.add(Restrictions.eq("AccountID", id));
 		return (UserRole)criteria.uniqueResult();
 	}
-
+*/
 }

@@ -1,9 +1,12 @@
 package com.wrenfitness.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,15 +16,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity
-@Table(name="ACCOUNTS")
+@Entity()
+@Table(name="accounts")
 public class User implements Serializable{
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -35,15 +38,36 @@ public class User implements Serializable{
 	@NotEmpty
 	@Column(name="Password", nullable=false)
 	private String password;
-		
+	
+	@Transient
 	private String confirmPassword;
+	
+	@Transient
+	private Integer roleID;
 	
 	@NotEmpty
 	@Column(name="Email", nullable=false)
 	private String email;
 	
-	private Set<UserRole> userRoles = new HashSet<UserRole>();
-	private Set<UserProfile> userProfile = new HashSet<UserProfile>();
+	@ManyToMany(targetEntity = Role.class, cascade = { CascadeType.MERGE })
+	@JoinTable(name = "userroles", 
+			joinColumns = { @JoinColumn(name = "AccountID") }, 
+			inverseJoinColumns = { @JoinColumn(name = "RoleID") })
+	private List<Role> userRoles = new ArrayList<Role>();
+	
+	@OneToMany(mappedBy="user")
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.DELETE})
+	private List<UserProfile> userProfile = new ArrayList<UserProfile>();
+	
+	@OneToMany(mappedBy="eventUser",fetch = FetchType.LAZY)
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.DELETE})
+	private List<UserEvent> events = new ArrayList<UserEvent>();
+	
+	@ManyToMany(targetEntity = UserEvent.class, cascade = { CascadeType.MERGE })
+	@JoinTable(name = "userevents", 
+			joinColumns = { @JoinColumn(name = "AccountID") }, 
+			inverseJoinColumns = { @JoinColumn(name = "EventID") })
+	private List<UserEvent> userRegisterEvents = new ArrayList<UserEvent>();
 
 	public Integer getId() {
 		return id;
@@ -86,22 +110,36 @@ public class User implements Serializable{
 		this.confirmPassword = confirmPassword;
 	}
 
-	@OneToMany(mappedBy="accounts")
-	public Set<UserRole> getUserRoles() {
+	public List<Role> getUserRoles() {
 		return userRoles;
 	}
 
-	public void setUserRoles(Set<UserRole> userRoles) {
+	public void setUserRoles(List<Role> userRoles) {
 		this.userRoles = userRoles;
 	}
 	
-	@OneToMany(mappedBy="accounts")
-	public Set<UserProfile> getUserProfile() {
+	public List<UserProfile> getUserProfile() {
 		return userProfile;
 	}
 
-	public void setUserProfile(Set<UserProfile> userProfile) {
+	public void setUserProfile(List<UserProfile> userProfile) {
 		this.userProfile = userProfile;
+	}
+	
+	public Integer getRoleID() {
+		return roleID;
+	}
+
+	public void setRoleID(Integer roleID) {
+		this.roleID = roleID;
+	}
+
+	public List<UserEvent> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<UserEvent> events) {
+		this.events = events;
 	}
 
 	@Override
@@ -129,6 +167,15 @@ public class User implements Serializable{
 			return false;
 		return true;
 	}
+	
+	public List<UserEvent> getUserRegisterEvents() {
+		return userRegisterEvents;
+	}
+
+	public void setUserRegisterEvents(List<UserEvent> userRegisterEvents) {
+		this.userRegisterEvents = userRegisterEvents;
+	}
+
 
 	/*
 	 * DO-NOT-INCLUDE passwords in toString function.

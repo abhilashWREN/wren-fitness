@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USERPROFILE")
+@Table(name="userprofile")
 public class UserProfile implements Serializable{
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -31,6 +31,8 @@ public class UserProfile implements Serializable{
 	@Column(name="ContactNumber")
 	private String contactNumber;
 	
+	@ManyToOne
+	@JoinColumn(name="AccountID", nullable=false)
 	private User user;
 
 	public Integer getId() {
@@ -73,8 +75,6 @@ public class UserProfile implements Serializable{
 		this.contactNumber = contactNumber;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "AccountID")
 	public User getUser() {
 		return user;
 	}

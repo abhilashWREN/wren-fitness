@@ -1306,3 +1306,33 @@ figure {
     background-color: #FFF;
 }
 
+h1{
+	color:#2bb673;
+}
+
+.erroricon{
+	max-height:100px;
+	max-width:100px;
+	
+}
+
+.fc{
+		color: #848484;
+}
+
+
+.errorbgimg{
+	width: 100%;
+    height: auto;
+    background-size: cover;
+	background-repeat:no-repeat;
+}
+
+/* Added*/
+fieldset { padding:0; border:0; margin-top:25px; }
+
+.ui-dialog .ui-state-error { padding: .3em; }
+
+#title {
+	margin-bottom:12px; width:95%; padding: .4em; 	
+}

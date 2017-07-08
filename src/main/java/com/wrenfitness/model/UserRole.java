@@ -11,30 +11,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="USERROLES")
 public class UserRole implements Serializable{
 
 	private User user;
 	private Role role;
-	
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="UserRoleID")
-	private Integer id;
 	
 	@Column(name="AccountID")
 	private Integer accountID;	
 
 	@Column(name="RoleID")
 	private Integer roleID;
-	
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public Integer getRoleID() {
 		return roleID;

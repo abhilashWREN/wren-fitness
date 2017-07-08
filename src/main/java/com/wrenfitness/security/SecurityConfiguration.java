@@ -36,11 +36,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
  
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/")
-                .access("hasRole('USER') or hasRole('ADMIN') or hasRole('DBA')").and().formLogin().loginPage("/login")
+        http.authorizeRequests().antMatchers("/").permitAll()
+                .antMatchers("/wren-fitness/login*").permitAll()
+                .antMatchers("/wren-fitness/trainer/**").access("hasRole('ADMIN') or hasRole('TRAINER')")
+                .antMatchers("/wren-fitness/trainee/**").access("hasRole('ADMIN') or hasRole('USER')")
+                .and().formLogin().loginPage("/wren-fitness/login").defaultSuccessUrl("/redirect")
                 .loginProcessingUrl("/login").usernameParameter("username").passwordParameter("password").and()
                 .rememberMe().rememberMeParameter("remember-me").tokenRepository(tokenRepository)
-                .tokenValiditySeconds(86400).and().csrf().and().exceptionHandling().accessDeniedPage("/Access_Denied");
+                .tokenValiditySeconds(86400).and().csrf().and().exceptionHandling().accessDeniedPage("/wren-fitness/Access_Denied");
     }
  
     @Bean

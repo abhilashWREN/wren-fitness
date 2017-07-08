@@ -8,9 +8,9 @@ import com.wrenfitness.model.UserRole;
 
 
 public interface UserRoleService {
-
+/*
 	UserRole findByAccountId(int id);
 	
 	List<UserRole> findAllUserRoles();
-	
+	*/
 }

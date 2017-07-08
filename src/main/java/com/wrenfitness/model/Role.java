@@ -1,7 +1,9 @@
 package com.wrenfitness.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -9,28 +11,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ROLE")
+@Table(name="roles")
 public class Role implements Serializable{
-
-	private Set<UserRole> userRoles = new HashSet<UserRole>();
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="RoleID")
-	private Integer roleID;	
+	private Integer id;	
 
 	@Column(name="Description", length=15, unique=true, nullable=false)
 	private String type = RoleType.USER.getRoleType();
 	
 	public Integer getId() {
-		return roleID;
+		return id;
 	}
 
 	public void setId(Integer id) {
-		this.roleID = id;
+		this.id = id;
 	}
 
 	public String getType() {
@@ -40,21 +41,12 @@ public class Role implements Serializable{
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-	@OneToMany(mappedBy="roles")
-	public Set<UserRole> getUserRoles() {
-		return userRoles;
-	}
-
-	public void setUserRoles(Set<UserRole> userRoles) {
-		this.userRoles = userRoles;
-	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((roleID == null) ? 0 : roleID.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
@@ -68,10 +60,10 @@ public class Role implements Serializable{
 		if (!(obj instanceof Role))
 			return false;
 		Role other = (Role) obj;
-		if (roleID == null) {
-			if (other.roleID != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!roleID.equals(other.roleID))
+		} else if (!id.equals(other.id))
 			return false;
 		if (type == null) {
 			if (other.type != null)
@@ -83,10 +75,7 @@ public class Role implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Role [id=" + roleID + ", type=" + type + "]";
+		return "Role [id=" + id + ", type=" + type + "]";
 	}
-
-
-
 
 }

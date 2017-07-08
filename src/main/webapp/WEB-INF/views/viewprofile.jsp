@@ -22,29 +22,26 @@
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
-
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'>
-	 <link type="text/css" rel="stylesheet" href="css/dyscrollup.min.css">
-    
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'>
+	 <link type="text/css" rel="stylesheet" href="<c:url value='/resources/css/dyscrollup.min.css' />"></link>
+       
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/animate.css' />"></link>
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/icomoon.css' />"></link>
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.css' />"></link>
 	<!-- Superfish -->
-	<link rel="stylesheet" href="css/superfish.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/superfish.css' />"></link>
 
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="<c:url value='/resources/css/style.css' />"></link>
 
-	<link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
 
 	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	
+	<script src="<c:url value='/resources/js/modernizr-2.6.2.min.js' />"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
+	<script src="resources/js/respond.min.js"></script>
 	<![endif]-->
 
 	</head>
@@ -219,37 +216,26 @@
 	<!-- jQuery -->
 
 
-	<script src="js/jquery.min.js"></script>
+	<script src="<c:url value='/resources/js/jquery.min.js' />"></script>
+	<script src="<c:url value='/resources/js/jquery.migrate.js' />"></script>
 	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="<c:url value='/resources/js/jquery.easing.1.3.js' />"></script>
 	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="<c:url value='/resources/js/bootstrap.min.js' />"></script>
 	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="<c:url value='/resources/js/jquery.waypoints.min.js' />"></script>
 	<!-- Stellar -->
-	<script src="js/jquery.stellar.min.js"></script>
+	<script src="<c:url value='/resources/js/jquery.stellar.min.js' />"></script>
 	<!-- Superfish -->
-	<script src="js/hoverIntent.js"></script>
-	<script src="js/superfish.js"></script>
+	<script src="<c:url value='/resources/js/hoverIntent.js' />"></script>
+	<script src="<c:url value='/resources/js/superfish.js' />"></script>
 
 	<!-- Main JS (Do not remove) -->
-	<script src="js/main.js"></script>
-	
-	<script src="js/moment-with-locales.js"></script>
-	<script src="js/bootstrap-datetimepicker.js"></script>
-	<script type="text/javascript" src="js/dyscrollup.min.js"></script>
+	<script src="<c:url value='/resources/js/main.js' />"></script>
+	 <script type="text/javascript" src="<c:url value='/resources/js/dyscrollup.min.js' />"></script>
 
 	<script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker({
-                    locale: 'en'
-                });
-            });
-			dyscrollup.init({image : 'images/36.png'});
-        </script>
-	 
-	
-		   
+			dyscrollup.init({image : '<c:url value='/resources/images/36.png'/>'});
 	</script>
 	
 

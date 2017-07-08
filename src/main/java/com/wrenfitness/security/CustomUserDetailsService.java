@@ -42,10 +42,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	private List<GrantedAuthority> getGrantedAuthorities(User user) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		Set<UserRole> userRoles = user.getUserRoles();
-		for(UserRole userRole : userRoles) {
+		List<Role> userRoles = user.getUserRoles();
+		for(Role userRole : userRoles) {
 			logger.info("UserProfile : {}", userRole);
-			authorities.add(new SimpleGrantedAuthority("ROLE_" + userRole.getRole().getType()));
+			authorities.add(new SimpleGrantedAuthority("ROLE_" + userRole.getType()));
 
 			logger.info("authorities : {}", authorities);
 		}

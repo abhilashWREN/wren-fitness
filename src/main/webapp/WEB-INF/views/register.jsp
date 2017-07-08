@@ -54,27 +54,21 @@
 				<div class="container">
 					<div class="nav-header">
 						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-						<h1 id="fh5co-logo"><a href="/index">WREN Fit<span>ness</span></a></h1>
+						<h1 id="fh5co-logo"><a href="/wren-fitness/">WREN Fit<span>ness</span></a></h1>
 						<!-- START #fh5co-menu-wrap -->
 						<nav id="fh5co-menu-wrap" role="navigation">
 							<ul class="sf-menu" id="fh5co-primary-menu">
 								<li>
-									<a href="/index">Home</a>
+									<a href="/wren-fitness/">Home</a>
 								</li>	
-								<li><a href="#" class="fh5co-sub-ddown">Event</a>
+								<!-- <li><a href="#" class="fh5co-sub-ddown">Event</a>
 									<ul class="fh5co-sub-menu">
-										<li><a href="/schedule">Book an Event</a></li>
-										<li><a href="/viewevent">View My Event</a></li>
+										<li><a href="/wren-fitness/schedule">Book an Event</a></li>
+										<li><a href="/wren-fitness/viewevent">View My Event</a></li>
 									</ul>
-								</li>
-								<li  class="active"><a href="/newuser">Register</a></li>
-								<li><a href="#" class="fh5co-sub-ddown">User</a>
-									<ul class="fh5co-sub-menu" >
-										<li><a href="/viewprofile">My Profile</a></li>
-										<li><a href="<c:url value="/logout" />" target="_blank">Logout</a></li>
-									</ul>
-								</li>
-								<li><a href="/login">Login</a></li>
+								</li> -->
+								<li  class="active"><a href="/wren-fitness/newuser">Register</a></li>
+								<li><a href="/wren-fitness/login">Login</a></li>
 								
 							</ul>
 						</nav>
@@ -89,7 +83,7 @@
 					<div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
 						<div class="fh5co-intro fh5co-table-cell animate-box">
 							<h1 class="text-center">Get Registered With Us!</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+							<p> We offer boot camps/workout session in your community. </p>
 						</div>
 					</div>
 				</div>
@@ -107,18 +101,28 @@
 								<div class="col-md-6">		
 								<f:input type="hidden" path="id" id="id"/>
 										<div class="form-group">
-											<f:input type="text" class="form-control" path="userProfile.firstName"
+											<f:input type="text" class="form-control" path="userName"
+												id="userName" placeholder="User Name"/>
+											<div class="has-error">
+												<f:errors path="userName" class="help-inline" />
+											</div>
+										</div></div>
+								<div class="col-md-6">
+								<div class="col-md-6">		
+								<f:input type="hidden" path="id" id="id"/>
+										<div class="form-group">
+											<f:input type="text" class="form-control" path="userProfile[0].firstName"
 												id="firstName" placeholder="FirstName"/>
 											<div class="has-error">
-												<f:errors path="userProfile.firstName" class="help-inline" />
+												<f:errors path="userProfile[0].firstName" class="help-inline" />
 											</div>
 										</div></div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<f:input type="text" class="form-control" path="userProfile.lastName" id="lastName"
+										<f:input type="text" class="form-control" path="userProfile[0].lastName" id="lastName"
 										placeholder="Last Name"/>
 										<div class="has-error">
-                            <f:errors path="userProfile.lastName" class="help-inline"/>
+                            <f:errors path="userProfile[0].lastName" class="help-inline"/>
                         </div>
 									</div>
 								</div>
@@ -151,19 +155,30 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<f:input type="text" class="form-control" path="userProfile.city" id="city"
+										<f:input type="text" class="form-control" path="userProfile[0].city" id="city"
 										placeholder="City"/>
 										 <div class="has-error">
-                            <f:errors path="userProfile.city" class="help-inline"/>
+                            <f:errors path="userProfile[0].city" class="help-inline"/>
                         </div>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<f:input type="phone" class="form-control" path="userProfile.contactNumber" 
+										<f:input type="phone" class="form-control" path="userProfile[0].contactNumber" 
 										id="contactNumber" placeholder="Contact Number"/>
 										 <div class="has-error">
-                            <f:errors path="userProfile.contactNumber" class="help-inline"/>
+                            <f:errors path="userProfile[0].contactNumber" class="help-inline"/>
+                        </div>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<f:radiobutton value="2" style="margin: 4px 4px 4px;" path="roleID" 
+										id="role" />User 
+										<f:radiobutton value="3" style="margin: 4px 4px 4px;" path="roleID" 
+										id="role" />Trainer 
+										 <div class="has-error">
+                            <f:errors path="roleID" class="help-inline"/>
                         </div>
 									</div>
 								</div>
@@ -245,6 +260,7 @@
 	<!-- jQuery -->
 
 	<script src="<c:url value='/resources/js/jquery.min.js' />"></script>
+	<script src="<c:url value='/resources/js/jquery.migrate.js' />"></script>
 	<!-- jQuery Easing -->
 	<script src="<c:url value='/resources/js/jquery.easing.1.3.js' />"></script>
 	<!-- Bootstrap -->

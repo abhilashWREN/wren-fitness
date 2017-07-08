@@ -48,7 +48,6 @@ CREATE TABLE `accounts` (
 -- Table structure for table `userroles`
 --
 CREATE TABLE `userroles` (
- `UserRoleID` int(11) NOT NULL,
   `AccountID` int(11) NOT NULL,
   `RoleID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -75,6 +74,16 @@ CREATE TABLE `userprofile` (
   `LastName` varchar(255) NOT NULL,
   `City` varchar(255) NOT NULL,
   `ContactNumber` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `events` (
+  `EventID` int(11) NOT NULL,
+  `AccountID` int(11) NOT NULL,
+  `Title` varchar(255) NOT NULL,
+  `AllDay` varchar(255) NOT NULL,
+  `Start` varchar(255) NOT NULL,
+  `End` varchar(30) NOT NULL,
+  `Url` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -105,12 +114,19 @@ ALTER TABLE `userprofile`
   
   
 ALTER TABLE `userroles`
-  ADD PRIMARY KEY (`UserRoleID`);
+  ADD PRIMARY KEY (`AccountID`,`RoleID`);
   
+
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`EventID`);
+  
+
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+
 
 --
 -- AUTO_INCREMENT for table `accounts`
@@ -127,6 +143,9 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `userprofile`
   MODIFY `ProfileID` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `events`
+  MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Add Foreign Keys for table `userroles`
 --
@@ -135,6 +154,40 @@ ALTER TABLE `userroles`
 ADD CONSTRAINT FK_ACCOUNT_PROFILE FOREIGN KEY (AccountID) REFERENCES accounts(AccountID) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT FK_ACCOUNT_ROLE FOREIGN KEY (RoleID) REFERENCES roles(RoleID);
 
+ALTER TABLE `userprofile`
+ADD CONSTRAINT FK_ACCOUNT_USER_PROFILE FOREIGN KEY (AccountID) REFERENCES accounts(AccountID) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+ALTER TABLE `events`
+ADD CONSTRAINT FK_ACCOUNT_EVENTS FOREIGN KEY (AccountID) REFERENCES accounts(AccountID) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+--added later
+CREATE TABLE `events` (
+  `EventID` int(11) NOT NULL,
+  `AccountID` int(11) NOT NULL,
+  `RepeatID` int(11),
+  `Title` varchar(255) NOT NULL,
+  `AllDay` varchar(255) ,
+  `Start` datetime NOT NULL,
+  `End` datetime,
+  `Url` varchar(30) 
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`EventID`);
+
+ALTER TABLE `events`
+  MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `events`
+ADD CONSTRAINT FK_ACCOUNT_EVENTS FOREIGN KEY (AccountID) REFERENCES accounts(AccountID) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `events`
+ADD CurrCapacity int(5);
+
+ALTER TABLE `events`
+ADD MaxCapacity int(5);
 
 CREATE TABLE persistent_logins (
     Username VARCHAR(64) NOT NULL,

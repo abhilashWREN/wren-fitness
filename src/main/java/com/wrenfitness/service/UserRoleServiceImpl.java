@@ -13,11 +13,11 @@ import com.wrenfitness.model.UserProfile;
 import com.wrenfitness.model.UserRole;
 
 
-@Service("userRoleService")
-@Transactional
+/*@Service("userRoleService")
+@Transactional*/
 public class UserRoleServiceImpl implements UserRoleService{
 	
-	@Autowired
+	/*@Autowired
 	UserRoleDao dao;
 
 	@Override
@@ -28,5 +28,5 @@ public class UserRoleServiceImpl implements UserRoleService{
 	@Override
 	public List<UserRole> findAllUserRoles() {
 		return dao.findAllUserRoles();
-	}
+	}*/
 }

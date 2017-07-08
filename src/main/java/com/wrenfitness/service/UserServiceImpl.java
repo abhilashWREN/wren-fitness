@@ -1,5 +1,6 @@
 package com.wrenfitness.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.wrenfitness.dao.UserDao;
 import com.wrenfitness.model.User;
+import com.wrenfitness.model.UserEvent;
 
 
 @Service("userService")
@@ -20,6 +22,9 @@ public class UserServiceImpl implements UserService{
 
 	@Autowired
     private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private UserEventService userEventService;
 	
 	public User findById(int id) {
 		return dao.findById(id);
@@ -38,14 +43,9 @@ public class UserServiceImpl implements UserService{
 	public void updateUser(User user) {
 		User entity = dao.findById(user.getId());
 		if(entity!=null){
-			entity.setUserName(user.getUserName());
-			if(!user.getPassword().equals(entity.getPassword())){
-				entity.setPassword(passwordEncoder.encode(user.getPassword()));
-			}
-			entity.setEmail(user.getEmail());
-			entity.setUserProfile(user.getUserProfile());
-			entity.setUserRoles(user.getUserRoles());
+			entity.setEvents(user.getEvents());
 		}
+		dao.updateUser(entity);
 	}
 
 	public List<User> findAllUsers() {
@@ -61,6 +61,30 @@ public class UserServiceImpl implements UserService{
 	public User findByUserName(String userName) {
 		User user = dao.findByUserName(userName);
 		return user;
+	}
+
+	@Override
+	public List<User> findAllTrainers() {
+		return dao.findAllTrainers();
+	}
+	
+	@Override
+	public void registerToEvent(String userName , int eventId){
+		User user = findByUserName(userName);
+		
+		UserEvent event = userEventService.findById(eventId);
+		List<UserEvent> eventList = user.getUserRegisterEvents();
+		eventList.add(event);
+		user.setUserRegisterEvents(eventList);
+		
+		dao.updateUser(user);
+		
+		userEventService.updateCapacity(eventId);
+		
+	}
+	
+	public List<UserEvent> findAllRegisterTraining(String userName){
+		return dao.findAllRegisterTraining(userName);
 	}
 	
 }

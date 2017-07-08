@@ -3,6 +3,7 @@ package com.wrenfitness.service;
 import java.util.List;
 
 import com.wrenfitness.model.User;
+import com.wrenfitness.model.UserEvent;
 
 
 public interface UserService {
@@ -17,6 +18,11 @@ public interface UserService {
 
 	List<User> findAllUsers(); 
 	
+	List<User> findAllTrainers();
+	
 	boolean isUserNameUnique(Integer id, String sso);
-
+	
+	 void registerToEvent(String userName , int eventId);
+	 
+	public List<UserEvent> findAllRegisterTraining(String userName);
 }
